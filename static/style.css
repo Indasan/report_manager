@@ -1,0 +1,31 @@
+.not-visible {
+    display: none;
+}
+
+.dz {
+    border-style: dashed;
+    border-radius: 5px;
+    border-color: cornflowerblue;
+    transition: .5s;
+}
+
+.dz:hover {
+    background-color: rgb(220, 227, 243);
+}
+
+.avatar {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+.avatar-sm {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.logo-sm {
+    height: 40px;
+    width: 40px;
+}

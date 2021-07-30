@@ -1,0 +1,41 @@
+{% load static %}
+{% url 'sales:home' as path_to_home %}
+{% url 'sales:list' as path_to_list %}
+{% url 'reports:from-file' as path_to_from_file %}
+{% url 'reports:main' as path_to_reports_home %}
+{% url 'profiles:my' as path_to_my %}
+{% url 'logout' as path_to_logout %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href=""><img src="{% static 'logo.png' %}" class="logo-sm"></a>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link {% if request.path == path_to_home %}active{% endif %}" href="{{path_to_home}}">Домашняя страница</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.path == path_to_list %}active{% endif %}" href="{{path_to_list}}">Продажи</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.path == path_to_from_file %}active{% endif %}" href="{{path_to_from_file}}">Добавить файл</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.path == path_to_reports_home %}active{% endif %}" href="{{path_to_reports_home}}">Отчёты</a>
+        </li>
+      </ul>
+    </div>
+    {% if request.user.is_authenticated %}
+      <div class="nav-item dropdown">
+        <div class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="{{request.user.profile.avatar.url}}" class="avatar-sm">&nbsp;{{request.user}}
+        </div>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <li><a class="dropdown-item" href="{{path_to_my}}">Профиль</a></li>
+          <li><a class="dropdown-item" href="{{path_to_logout}}">Выход</a></li>
+        </ul>
+      </div>
+    {% endif %}
+  </div>
+</nav>

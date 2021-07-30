@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Профиль пользователя
+{% endblock title %}
+
+{% block content %}
+    {% if confirm %}
+        <div class="alert alert-primary" role="alert">
+            Ваш профиль обновлён!
+        </div>
+    {% endif %}
+
+    <div class='text-center'>
+        <img src='{{profile.avatar.url}}' alt='profile avatar' class='avatar'>
+    </div>
+
+    <br>
+
+    <form action='' method='POST' enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type='submit' class='btn btn-primary mt-3'>Обновить</button>
+    </form>
+{% endblock content %}
